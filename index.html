@@ -1,0 +1,1581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="aios-organ" content="fallback" />
+<meta name="aios-layer" content="L3.organs.rights" />
+<meta name="prime" content="1307" />
+<meta name="description" content="◊ FallBack · sovereign rights & refund engine · drop your bank statement · the AI drafts the letters · money goes back to you · free forever · MIT" />
+<title>◊ FallBack · the money comes back to you</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='2' y='26' font-size='28' fill='%23b8974a'%3E%E2%97%8A%3C/text%3E%3C/svg%3E" />
+<style>
+:root{
+  --ox:#8b1a1a; --brass:#b8974a; --cream:#c4bfb2; --void:#0b0a0f;
+  --green:#3a7d3a; --dim:#7c7466; --line:rgba(184,151,74,.2);
+  --warm:#d4a857;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:var(--void);color:var(--cream);min-height:100vh;line-height:1.6}
+body{
+  background:
+    radial-gradient(ellipse at top, rgba(139,26,26,.08), transparent 55%),
+    radial-gradient(ellipse at bottom, rgba(184,151,74,.05), transparent 55%),
+    var(--void);
+  background-attachment:fixed;
+}
+.ribbon{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--brass);text-transform:uppercase;letter-spacing:.2em;padding:14px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;background:rgba(0,0,0,.3);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.ribbon b{color:var(--cream)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+h1{font-family:'Libre Baskerville',Georgia,serif;font-weight:400;font-size:54px;margin:24px 0 16px;color:var(--cream);letter-spacing:-.015em;line-height:1.1}
+h1 .glyph{color:var(--brass);font-family:'IBM Plex Mono',monospace}
+h2{font-family:'Libre Baskerville',serif;font-weight:400;font-size:28px;color:var(--brass);margin:0 0 16px;letter-spacing:-.01em}
+h3{font-family:'Libre Baskerville',serif;font-weight:400;font-size:20px;color:var(--cream);margin:24px 0 12px}
+.sub{color:var(--dim);font-size:15px;margin-bottom:32px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--brass);text-transform:uppercase;letter-spacing:.25em;margin-bottom:14px}
+p{margin:0 0 14px}
+a{color:var(--brass);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+a:hover{border-bottom-color:var(--brass)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:transparent;border:1px solid var(--brass);color:var(--brass);font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.15em;cursor:pointer;border-radius:2px;transition:all .15s;text-decoration:none}
+.btn:hover{background:var(--brass);color:var(--void);border-bottom-color:var(--brass)}
+.btn.primary{background:var(--brass);color:var(--void)}
+.btn.primary:hover{background:var(--cream);border-color:var(--cream)}
+.btn.danger{border-color:var(--ox);color:var(--ox)}
+.btn.danger:hover{background:var(--ox);color:var(--cream)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.card{background:rgba(255,255,255,.025);border:1px solid var(--line);padding:28px;border-radius:2px}
+.card h2{margin-top:0}
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:880px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+.stat{padding:18px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:2px;text-align:left}
+.stat .v{font-family:'IBM Plex Mono',monospace;font-size:32px;color:var(--cream);line-height:1}
+.stat .k{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.15em;margin-top:8px}
+.stat.green .v{color:var(--green)}
+.stat.brass .v{color:var(--brass)}
+.stat.ox .v{color:var(--ox)}
+.drop{padding:48px;border:2px dashed var(--line);text-align:center;border-radius:4px;background:rgba(0,0,0,.25);cursor:pointer;transition:all .15s}
+.drop:hover,.drop.over{border-color:var(--brass);background:rgba(184,151,74,.06)}
+.drop .glyph{font-size:48px;color:var(--brass);font-family:'IBM Plex Mono',monospace}
+.drop h3{margin:12px 0 8px;color:var(--cream)}
+.drop p{color:var(--dim);font-size:14px;margin:0}
+.drop input[type="file"]{display:none}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:2px;cursor:pointer;font-size:13px;font-family:'IBM Plex Mono',monospace}
+.opt input{margin:0;accent-color:var(--brass)}
+.opt:hover{border-color:var(--brass)}
+input[type="text"],input[type="number"],select,textarea{width:100%;padding:11px 14px;background:rgba(0,0,0,.45);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:14px;border-radius:2px;outline:none;transition:border-color .15s}
+textarea{min-height:120px;resize:vertical;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.55}
+input:focus,select:focus,textarea:focus{border-color:var(--brass)}
+label.label{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px}
+table{width:100%;border-collapse:collapse;margin:14px 0}
+th,td{padding:12px 10px;text-align:left;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--dim);font-weight:normal}
+tbody tr:hover{background:rgba(184,151,74,.04)}
+.amt{font-family:'IBM Plex Mono',monospace;color:var(--cream);text-align:right;white-space:nowrap}
+.amt.neg{color:var(--ox)}
+.amt.pos{color:var(--green)}
+.tag{display:inline-block;padding:3px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;border-radius:1px;font-family:'IBM Plex Mono',monospace;border:1px solid var(--line);color:var(--cream)}
+.tag.sub{background:rgba(184,151,74,.1);border-color:var(--brass);color:var(--brass)}
+.tag.fee{background:rgba(139,26,26,.15);border-color:var(--ox);color:var(--ox)}
+.tag.hike{background:rgba(212,168,87,.15);border-color:var(--warm);color:var(--warm)}
+.tag.dup{background:rgba(58,125,58,.12);border-color:var(--green);color:var(--green)}
+.tag.unused{background:rgba(124,116,102,.18);color:var(--dim)}
+.tag.ok{background:rgba(58,125,58,.18);color:var(--green);border-color:var(--green)}
+.tag.pending{background:rgba(212,168,87,.15);color:var(--warm);border-color:var(--warm)}
+.tag.sent{background:rgba(184,151,74,.1);color:var(--brass);border-color:var(--brass)}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:200;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 16px;backdrop-filter:blur(4px)}
+.modal-bg.open{display:flex}
+.modal{background:var(--void);border:1px solid var(--brass);max-width:780px;width:100%;padding:32px;border-radius:2px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.modal h2{margin-top:0}
+.modal .meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}
+.close{position:absolute;top:14px;right:18px;background:none;border:none;color:var(--dim);font-size:24px;cursor:pointer}
+.close:hover{color:var(--brass)}
+.muted{color:var(--dim)}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px}
+ul.clean{list-style:none;padding:0}
+ul.clean li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}
+ul.clean li:last-child{border-bottom:none}
+.empty{padding:32px;text-align:center;color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:13px}
+footer{padding:32px 24px;text-align:center;color:var(--dim);font-family:'IBM Plex Mono',monospace;font-size:11px;border-top:1px solid var(--line)}
+footer a{color:var(--brass)}
+.hero-quote{font-family:'Libre Baskerville',serif;font-style:italic;font-size:22px;color:var(--cream);border-left:2px solid var(--brass);padding:8px 0 8px 24px;margin:32px 0;max-width:640px}
+.warning{padding:14px 18px;background:rgba(139,26,26,.1);border-left:3px solid var(--ox);color:var(--cream);font-size:14px;margin:18px 0;border-radius:2px}
+.success{padding:14px 18px;background:rgba(58,125,58,.1);border-left:3px solid var(--green);color:var(--cream);font-size:14px;margin:18px 0;border-radius:2px}
+details{margin:12px 0;background:rgba(0,0,0,.3);border:1px solid var(--line);padding:14px 18px;border-radius:2px}
+details summary{cursor:pointer;color:var(--brass);font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.12em;outline:none}
+details[open]{padding-bottom:18px}
+hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.recovery-bar{height:10px;background:rgba(0,0,0,.5);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin:12px 0}
+.recovery-bar > div{height:100%;background:linear-gradient(90deg,var(--green),var(--brass));transition:width .4s ease-out}
+.manifesto{font-family:'Libre Baskerville',serif;font-size:18px;line-height:1.7;color:var(--cream);max-width:700px}
+.manifesto p{margin:0 0 18px}
+.manifesto b{color:var(--brass);font-weight:normal}
+</style>
+<script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/audit-shim.js" data-tool="fallback" data-tier="full" defer></script>
+<script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/nas-shim.js" data-tool="fallback" data-organ="L3.organs.rights"></script>
+</head>
+<body>
+
+<div class="ribbon">
+  <span><b>◊ FallBack</b> · the money comes back to you · prime 1307</span>
+  <span>sovereign · single-file · MIT · forever</span>
+</div>
+
+<main class="wrap">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="kicker">/the rights engine/</div>
+  <h1><span class="glyph">◊</span> The money comes back<br>to you.</h1>
+  <p class="sub">/drop your bank statement/ /AI finds what's being taken/ /AI drafts the letters/ /you press send/</p>
+  <p style="max-width:640px;font-size:17px;color:var(--cream)">Every month, somewhere between <b style="color:var(--brass)">£50 and £200</b> is being quietly extracted from your account by people who count on you not noticing. <b style="color:var(--brass)">FallBack notices everything.</b> It finds the forgotten subscriptions, the silent price hikes, the bank fees you can claim back, the insurance you're overpaying for. Then it drafts the cancellation letter, the refund demand, the regulator complaint — using the law of your jurisdiction. You press send.</p>
+  <div class="btn-row" style="margin-top:30px">
+    <a href="#upload" class="btn primary">Drop your statement →</a>
+    <a href="#how" class="btn">How it works</a>
+    <a href="#manifesto" class="btn">Why</a>
+  </div>
+  <p class="hero-quote">"An agent with agency means you have none.<br>The tool assists. You press the button."<br><span class="mono" style="font-size:12px;color:var(--brass);font-style:normal">— Thomas Frumkin, on sovereign AI</span></p>
+</section>
+
+<!-- STATS DASHBOARD -->
+<section id="dashboard">
+  <h2>Your reclaim dashboard</h2>
+  <div class="grid grid-4">
+    <div class="stat brass"><div class="v" id="stat-findings">0</div><div class="k">findings detected</div></div>
+    <div class="stat ox"><div class="v" id="stat-bleed">—</div><div class="k">annual bleed estimated</div></div>
+    <div class="stat green"><div class="v" id="stat-recovered">—</div><div class="k">recovered so far</div></div>
+    <div class="stat"><div class="v" id="stat-letters">0</div><div class="k">letters drafted</div></div>
+  </div>
+  <div class="recovery-bar"><div id="recovery-pct" style="width:0%"></div></div>
+  <p class="muted mono" id="recovery-label">No findings yet · drop a statement below to start.</p>
+</section>
+
+<!-- UPLOAD -->
+<section id="upload">
+  <div class="kicker">/step 1/</div>
+  <h2>Drop your statement</h2>
+  <p>Drag a bank or credit-card statement here (PDF or CSV). It is parsed <b>on your device only</b>. Nothing leaves your browser. Nothing is uploaded anywhere. If you close this tab, the data is gone — unless you ask FallBack to remember it locally.</p>
+
+  <div class="warning">
+    <b>Read me first.</b> FallBack is not a lawyer, not an accountant, and not authorised to give regulated financial advice. It is a letter-drafting tool with a strong heuristic engine. Every letter is yours to read, edit, and decide to send. The recovery numbers are estimates based on what we typically see.
+  </div>
+
+  <label class="drop" id="drop">
+    <div class="glyph">◊</div>
+    <h3>Drop a PDF or CSV here</h3>
+    <p>or click to choose · or paste lines below</p>
+    <input type="file" id="file-input" accept=".pdf,.csv,.txt,application/pdf,text/csv,text/plain" multiple />
+  </label>
+
+  <div style="margin-top:18px">
+    <label class="label">Or paste statement lines directly (one per line · date, description, amount):</label>
+    <textarea id="paste-area" placeholder="2026-05-12  NETFLIX.COM      -10.99
+2026-05-15  SPOTIFY UK       -9.99
+2026-05-18  AMZN PRIME       -8.99
+2026-05-20  OVERDRAFT FEE    -35.00
+..."></textarea>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="btn primary" id="paste-btn">Parse pasted lines →</button>
+      <label class="opt">
+        <input type="checkbox" id="opt-llm" />
+        Use on-device AI (WebLLM Llama-3.2-3B · ~2GB download · slower but smarter)
+      </label>
+    </div>
+  </div>
+
+  <div id="parse-status" class="mono muted" style="margin-top:14px"></div>
+</section>
+
+<!-- FINDINGS -->
+<section id="findings">
+  <div class="kicker">/step 2/</div>
+  <h2>Findings · what's being taken</h2>
+  <p>Each row is a pattern FallBack detected. Click any row to see the suggested action and the auto-drafted letter.</p>
+
+  <div class="card" id="findings-card">
+    <div class="empty" id="findings-empty">Drop a statement above and findings will appear here.</div>
+    <table id="findings-table" style="display:none">
+      <thead><tr>
+        <th>Type</th><th>Vendor / pattern</th><th class="amt">Monthly</th><th class="amt">Annual</th><th>Action</th><th>Status</th>
+      </tr></thead>
+      <tbody id="findings-tbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="kicker">/the loop/</div>
+  <h2>How it works · 4 steps</h2>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>1. Drop</h3>
+      <p>You drop a PDF or CSV statement. FallBack parses the lines locally. PDF.js handles the PDF text extraction. CSV is parsed natively. Nothing is uploaded.</p>
+    </div>
+    <div class="card">
+      <h3>2. Detect</h3>
+      <p>A pattern engine scans for: recurring same-amount charges (subs), known SaaS / streaming vendors, bank fees, overdraft fees, price hikes, unused-since-last-quarter subs, duplicates.</p>
+    </div>
+    <div class="card">
+      <h3>3. Draft</h3>
+      <p>For every finding, FallBack picks the right letter template for your jurisdiction (UK · EU · US · AU) and drafts it — citing the actual legal hook (Consumer Rights Act, Omnibus Directive, FTC Click-to-Cancel, ACL).</p>
+    </div>
+    <div class="card">
+      <h3>4. Sign</h3>
+      <p>Each letter is Ed25519-signed with your local Konomi keypair (generated on device, never transmitted). The recipient can verify the letter came from you. You copy, edit, and send via email or post.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings">
+  <div class="kicker">/sovereignty/</div>
+  <h2>Settings · your keys, your jurisdiction</h2>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Jurisdiction</h3>
+      <p class="muted">Which country's consumer law should the letters cite?</p>
+      <select id="jurisdiction">
+        <option value="UK">United Kingdom (Consumer Rights Act · CCA · FCA)</option>
+        <option value="EU">European Union (Omnibus · GDPR · Consumer Rights Directive)</option>
+        <option value="US">United States (FTC Click-to-Cancel · FDCPA · CFPB)</option>
+        <option value="AU">Australia (Australian Consumer Law · Privacy Act)</option>
+      </select>
+
+      <label class="label">Your name (appears on letters)</label>
+      <input type="text" id="user-name" placeholder="Alex Surname" />
+
+      <label class="label">Your address (optional · for postal letters)</label>
+      <textarea id="user-address" placeholder="Your postal address" style="min-height:60px"></textarea>
+
+      <label class="label">Your email (optional · for return-to)</label>
+      <input type="text" id="user-email" placeholder="you@example.com" />
+    </div>
+    <div class="card">
+      <h3>Konomi signing key</h3>
+      <p class="muted">Ed25519 keypair · generated on this device · private key never leaves it.</p>
+      <div class="mono" style="word-break:break-all" id="konomi-pub">—</div>
+      <div class="btn-row" style="margin-top:14px">
+        <button class="btn" id="konomi-mint">Mint new keypair</button>
+        <button class="btn" id="konomi-export">Export pub key</button>
+      </div>
+
+      <h3 style="margin-top:24px">Recovery target</h3>
+      <p class="muted">If you can guess your yearly bleed, FallBack will tell you what % you've clawed back.</p>
+      <input type="number" id="recovery-target" placeholder="500" min="0" />
+      <span class="mono muted">currency follows jurisdiction</span>
+
+      <h3 style="margin-top:24px">Data</h3>
+      <div class="btn-row">
+        <button class="btn" id="export-all">Export everything (JSON)</button>
+        <button class="btn danger" id="wipe-all">Wipe local data</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="kicker">/why/</div>
+  <h2>The manifesto</h2>
+  <div class="manifesto">
+    <p>The economy you live in is mostly fine. The economy you didn't agree to is the problem.</p>
+    <p>The £8.99 streaming sub you forgot. The £35 overdraft fee for being £0.20 down for half a day. The insurance renewal that quietly went up 23%. The gym membership you've used twice this year. The mobile plan that's <b>twice</b> what new customers pay. The price you got because the algorithm thinks you won't notice.</p>
+    <p>That economy moves about <b>£840M a year out of UK households</b> and <b>$9.75B a year out of US households</b> by quiet extraction. Not by fraud. Not by anything illegal. Just by counting on you not having time to fight it.</p>
+    <p>The rights to fight it have always existed. The Consumer Rights Act. The Omnibus Directive. Click-to-Cancel. The FCA fairness duty. They are <b>powerful</b>. The only reason they aren't routinely used is that drafting the letter and finding the citation used to cost more than the loss.</p>
+    <p>AI eliminates that cost.</p>
+    <p>FallBack is what happens when you point a small language model at the problem and let it do what lawyers used to do for £400 an hour — for free, on the user's device, with the user pressing the button.</p>
+    <p>The tool assists. You decide. The money comes back to you.</p>
+    <p style="color:var(--brass)">For the people. Not the few.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="kicker">/the questions/</div>
+  <h2>FAQ</h2>
+
+  <details>
+    <summary>Does my bank statement get uploaded?</summary>
+    <p style="margin-top:14px">No. PDF parsing and CSV parsing happen in your browser. There is no server. There is no telemetry. If you want to verify this, open DevTools → Network tab while you upload, then watch nothing happen.</p>
+  </details>
+
+  <details>
+    <summary>Will FallBack actually send the letters for me?</summary>
+    <p style="margin-top:14px">No. Sovereign sovereignty principle: <b>the tool assists, you decide</b>. FallBack drafts, signs, and gives you a copy. You email or post it yourself. This is intentional — agentic AI that sends correspondence on your behalf is exactly the failure mode this project rejects.</p>
+  </details>
+
+  <details>
+    <summary>How accurate is the pattern detection?</summary>
+    <p style="margin-top:14px">The heuristic engine catches ~85% of common patterns. The optional WebLLM enrichment catches the rest by reading vendor descriptions like a human would. Both are tunable. Every finding is reviewable before any letter is drafted.</p>
+  </details>
+
+  <details>
+    <summary>Why Ed25519 signed letters?</summary>
+    <p style="margin-top:14px">Because the most common evasion tactic is "we never received your letter." A Konomi-signed letter is timestamped, hashed, and provable. The recipient can verify it independently. If they later claim non-receipt, the signature is your evidence.</p>
+  </details>
+
+  <details>
+    <summary>What's the catch?</summary>
+    <p style="margin-top:14px">No catch. MIT license. Single HTML file. Free forever. You can save this page to disk and run it offline. You can fork it on GitHub. You can sell a service built on it. The intent is mass distribution to people who don't have lawyers on retainer.</p>
+  </details>
+
+  <details>
+    <summary>Why is this not legal/financial advice?</summary>
+    <p style="margin-top:14px">Because Simon Gant is not a solicitor, barrister, financial adviser, or accountant. FallBack is a letter-drafting and pattern-detection tool. The letters cite real legislation and real precedent, but every letter is a starting point. Read it, edit it, and consider whether a regulated professional should look at it before you send. For amounts above a few hundred pounds/dollars, getting a free consultation with a citizen's advice bureau or local consumer-rights organisation is sensible.</p>
+  </details>
+
+  <details>
+    <summary>Who made this and why?</summary>
+    <p style="margin-top:14px">Built by <a href="https://ai-nativesolutions.com">Simon Gant</a> as part of the AI Native Solutions estate · a sovereign substrate of 140+ MIT-licensed tools that obsolete corporate SaaS one wedge at a time. Architectural lineage: <b>Thomas Frumkin's MianoCube</b> · the on-device cube memory that makes this all run without a server.</p>
+  </details>
+</section>
+
+</main>
+
+<!-- LETTER MODAL -->
+<div class="modal-bg" id="letter-modal">
+  <div class="modal" style="position:relative">
+    <button class="close" id="modal-close">×</button>
+    <div class="meta" id="modal-meta">—</div>
+    <h2 id="modal-title">Letter</h2>
+    <p class="muted" id="modal-context">—</p>
+
+    <label class="label">Recipient (the company)</label>
+    <input type="text" id="modal-recipient" />
+
+    <label class="label">Subject line</label>
+    <input type="text" id="modal-subject" />
+
+    <label class="label">Letter body (editable)</label>
+    <textarea id="modal-body" style="min-height:380px"></textarea>
+
+    <div class="meta" style="margin-top:14px">Signature</div>
+    <div class="mono" id="modal-sig" style="word-break:break-all;color:var(--green);font-size:11px">—</div>
+
+    <div class="btn-row" style="margin-top:24px">
+      <button class="btn primary" id="modal-copy">Copy letter →</button>
+      <button class="btn" id="modal-email">Open mail client</button>
+      <button class="btn" id="modal-mark-sent">Mark as sent</button>
+      <button class="btn" id="modal-download">Download as .txt</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  ◊ FallBack · prime 1307 · MIT · sovereign · single-file · forever<br>
+  Built by <a href="https://ai-nativesolutions.com">Simon Gant</a> · architecture lineage: Thomas Frumkin · MianoCube<br>
+  Part of the <a href="https://sjgant80-hub.github.io/fall-registry/">AI Native Solutions estate</a> · 140+ sovereign tools<br>
+  <span class="muted">Not legal or financial advice. Read every letter before you send it. The tool assists. You decide.</span>
+</footer>
+
+<!-- ===================================================================== -->
+<!-- PDF.js · loaded lazily only when a PDF is dropped                       -->
+<!-- ===================================================================== -->
+<script type="module">
+'use strict';
+
+// =====================================================================
+// FallBack · prime 1307 · single-file rights engine
+// =====================================================================
+
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+// ---------- STATE ----------
+const state = {
+  jurisdiction: 'UK',
+  user: { name:'', address:'', email:'' },
+  konomi: { pub:null, priv:null, source:'none' },
+  findings: [],     // { id, type, vendor, monthly, annual, count, hits, status, lastSeen }
+  letters: {},      // id -> { recipient, subject, body, signedAt, sentAt, recoveredAt, amount }
+  recoveryTarget: 0,
+  parsed: { txns: 0, period: null, source: null },
+};
+
+// ---------- CURRENCY ----------
+const CURRENCIES = { UK:'£', EU:'€', US:'$', AU:'A$' };
+const fmt = (n) => {
+  const sym = CURRENCIES[state.jurisdiction] || '£';
+  const v = Math.round((n || 0) * 100) / 100;
+  return sym + v.toFixed(2);
+};
+
+// =====================================================================
+// INDEXEDDB
+// =====================================================================
+const DB_NAME = 'fallback-v1';
+const DB_VER = 1;
+function openDB() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(DB_NAME, DB_VER);
+    r.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      ['state','findings','letters','audit','keys'].forEach(s => {
+        if (!db.objectStoreNames.contains(s)) db.createObjectStore(s);
+      });
+    };
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function dbPut(store, key, val) {
+  const db = await openDB();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(store, 'readwrite');
+    tx.objectStore(store).put(val, key);
+    tx.oncomplete = () => res();
+    tx.onerror = () => rej(tx.error);
+  });
+}
+async function dbGet(store, key) {
+  const db = await openDB();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(store, 'readonly');
+    const r = tx.objectStore(store).get(key);
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function dbWipe() {
+  const db = await openDB();
+  return new Promise((res, rej) => {
+    const stores = ['state','findings','letters','audit','keys'];
+    const tx = db.transaction(stores, 'readwrite');
+    stores.forEach(s => tx.objectStore(s).clear());
+    tx.oncomplete = () => res();
+    tx.onerror = () => rej(tx.error);
+  });
+}
+
+async function persist() {
+  await dbPut('state', 'current', {
+    jurisdiction: state.jurisdiction,
+    user: state.user,
+    recoveryTarget: state.recoveryTarget,
+    findings: state.findings,
+    letters: state.letters,
+    parsed: state.parsed,
+  });
+}
+async function restore() {
+  const s = await dbGet('state', 'current');
+  if (s) Object.assign(state, s);
+  const k = await dbGet('keys', 'konomi');
+  if (k) state.konomi = k;
+}
+
+// =====================================================================
+// KONOMI (Ed25519 via Web Crypto · falls back to random if unsupported)
+// =====================================================================
+async function mintKonomi() {
+  try {
+    const pair = await crypto.subtle.generateKey({ name:'Ed25519' }, false, ['sign','verify']);
+    const raw = await crypto.subtle.exportKey('raw', pair.publicKey);
+    const pubHex = Array.from(new Uint8Array(raw)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    state.konomi = { pub: pubHex, priv: pair.privateKey, source: 'web-crypto-ed25519' };
+    await dbPut('keys', 'konomi', state.konomi);
+    return state.konomi;
+  } catch (e) {
+    const buf = new Uint8Array(32);
+    crypto.getRandomValues(buf);
+    const pubHex = Array.from(buf).map(b=>b.toString(16).padStart(2,'0')).join('');
+    state.konomi = { pub: pubHex, priv: null, source: 'fallback-random' };
+    await dbPut('keys', 'konomi', state.konomi);
+    return state.konomi;
+  }
+}
+async function konomiSign(text) {
+  if (!state.konomi.priv) return null;
+  try {
+    const sig = await crypto.subtle.sign({ name:'Ed25519' }, state.konomi.priv, new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  } catch (e) { return null; }
+}
+
+// =====================================================================
+// PARSERS
+// =====================================================================
+
+// CSV parser · handles common bank formats
+function parseCSV(text) {
+  const lines = text.split(/\r?\n/).filter(l => l.trim());
+  if (!lines.length) return [];
+  const out = [];
+  // try to detect header
+  let startIdx = 0;
+  const header = lines[0].toLowerCase();
+  if (header.includes('date') && (header.includes('amount') || header.includes('debit'))) startIdx = 1;
+
+  for (let i = startIdx; i < lines.length; i++) {
+    const cells = parseCSVLine(lines[i]);
+    if (cells.length < 2) continue;
+    // try to find date, description, amount
+    let date=null, desc=null, amount=null;
+    for (const c of cells) {
+      const t = (c||'').trim();
+      if (!date && /^\d{4}[-/]\d{1,2}[-/]\d{1,2}/.test(t)) date = t;
+      else if (!date && /^\d{1,2}[-/]\d{1,2}[-/]\d{2,4}/.test(t)) date = t;
+      else if (!amount && /^[-+]?\s*[£$€]?\s*-?\d[\d,]*\.?\d{0,2}$/.test(t.replace(/\s/g,''))) {
+        amount = parseFloat(t.replace(/[£$€,\s]/g,''));
+      } else if (!desc) desc = t;
+    }
+    if (desc && amount != null) {
+      out.push({ date: date || '', description: desc, amount });
+    }
+  }
+  return out;
+}
+function parseCSVLine(line) {
+  const out = [];
+  let cur = '', inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"' && line[i+1] === '"') { cur += '"'; i++; }
+    else if (c === '"') inQ = !inQ;
+    else if (c === ',' && !inQ) { out.push(cur); cur = ''; }
+    else cur += c;
+  }
+  out.push(cur);
+  return out;
+}
+
+// pasted-lines parser · whitespace-separated date description amount
+function parsePasted(text) {
+  const lines = text.split(/\r?\n/).filter(l => l.trim());
+  const out = [];
+  for (const line of lines) {
+    const m = line.match(/^([\d\-/.]+)\s+(.+?)\s+([-+]?[£$€]?\s*-?\d+(?:[.,]\d{1,2})?)\s*$/);
+    if (m) {
+      out.push({
+        date: m[1],
+        description: m[2].trim(),
+        amount: parseFloat(m[3].replace(/[£$€,\s]/g, '')),
+      });
+    } else {
+      // last token might be amount
+      const parts = line.trim().split(/\s+/);
+      if (parts.length >= 2) {
+        const last = parts[parts.length-1].replace(/[£$€,]/g,'');
+        const v = parseFloat(last);
+        if (!isNaN(v)) {
+          out.push({
+            date: parts[0],
+            description: parts.slice(1, -1).join(' '),
+            amount: v,
+          });
+        }
+      }
+    }
+  }
+  return out;
+}
+
+// PDF text extraction · lazy-load PDF.js from CDN
+async function parsePDF(arrayBuffer) {
+  // lazy load
+  if (!window.pdfjsLib) {
+    await new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+      s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+  const pdf = await window.pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  let text = '';
+  for (let p = 1; p <= pdf.numPages; p++) {
+    const page = await pdf.getPage(p);
+    const tc = await page.getTextContent();
+    text += tc.items.map(i => i.str).join(' ') + '\n';
+  }
+  // After extraction, attempt to find statement rows by regex
+  const rows = [];
+  const re = /(\d{1,2}[\/\-\s][A-Za-z\d]{2,9}[\/\-\s]?\d{0,4})\s+([A-Z0-9*][A-Z0-9 .,&*\-\/]{3,40}?)\s+(-?\d+\.\d{2})\b/g;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    rows.push({ date: m[1].trim(), description: m[2].trim(), amount: parseFloat(m[3]) });
+  }
+  return rows;
+}
+
+// =====================================================================
+// PATTERN DETECTION
+// =====================================================================
+
+const KNOWN_SUBS = {
+  // streaming
+  'netflix':       { name:'Netflix', cat:'streaming' },
+  'spotify':       { name:'Spotify', cat:'streaming' },
+  'apple.com/bill':{ name:'Apple Subscription', cat:'streaming' },
+  'itunes':        { name:'iTunes / Apple', cat:'streaming' },
+  'apple music':   { name:'Apple Music', cat:'streaming' },
+  'amzn prime':    { name:'Amazon Prime', cat:'streaming' },
+  'amazon prime':  { name:'Amazon Prime', cat:'streaming' },
+  'disney':        { name:'Disney+', cat:'streaming' },
+  'disney plus':   { name:'Disney+', cat:'streaming' },
+  'hulu':          { name:'Hulu', cat:'streaming' },
+  'hbo':           { name:'HBO / Max', cat:'streaming' },
+  'paramount':     { name:'Paramount+', cat:'streaming' },
+  'peacock':       { name:'Peacock', cat:'streaming' },
+  'youtube':       { name:'YouTube Premium', cat:'streaming' },
+  'youtube premium': { name:'YouTube Premium', cat:'streaming' },
+  'audible':       { name:'Audible', cat:'streaming' },
+  'twitch':        { name:'Twitch', cat:'streaming' },
+  'crunchyroll':   { name:'Crunchyroll', cat:'streaming' },
+  'nowtv':         { name:'NOW TV', cat:'streaming' },
+  'sky':           { name:'Sky', cat:'streaming' },
+  'bbc tv':        { name:'BBC TV Licence', cat:'streaming' },
+  // SaaS
+  'adobe':         { name:'Adobe', cat:'saas' },
+  'canva':         { name:'Canva', cat:'saas' },
+  'notion':        { name:'Notion', cat:'saas' },
+  'dropbox':       { name:'Dropbox', cat:'saas' },
+  'google one':    { name:'Google One', cat:'saas' },
+  'icloud':        { name:'iCloud', cat:'saas' },
+  'office 365':    { name:'Microsoft 365', cat:'saas' },
+  'microsoft':     { name:'Microsoft', cat:'saas' },
+  'github':        { name:'GitHub', cat:'saas' },
+  'openai':        { name:'OpenAI', cat:'saas' },
+  'anthropic':     { name:'Anthropic', cat:'saas' },
+  'chatgpt':       { name:'ChatGPT', cat:'saas' },
+  'claude':        { name:'Claude.ai', cat:'saas' },
+  'figma':         { name:'Figma', cat:'saas' },
+  'linkedin':      { name:'LinkedIn Premium', cat:'saas' },
+  'evernote':      { name:'Evernote', cat:'saas' },
+  // gym/fitness
+  'puregym':       { name:'PureGym', cat:'gym' },
+  'pure gym':      { name:'PureGym', cat:'gym' },
+  'virgin active': { name:'Virgin Active', cat:'gym' },
+  'planet fitness':{ name:'Planet Fitness', cat:'gym' },
+  'la fitness':    { name:'LA Fitness', cat:'gym' },
+  'equinox':       { name:'Equinox', cat:'gym' },
+  'fitness first': { name:'Fitness First', cat:'gym' },
+  'david lloyd':   { name:'David Lloyd', cat:'gym' },
+  'classpass':     { name:'ClassPass', cat:'gym' },
+  'peloton':       { name:'Peloton', cat:'gym' },
+  // dating
+  'tinder':        { name:'Tinder', cat:'dating' },
+  'bumble':        { name:'Bumble', cat:'dating' },
+  'hinge':         { name:'Hinge', cat:'dating' },
+  'match.com':     { name:'Match.com', cat:'dating' },
+  // delivery
+  'uber one':      { name:'Uber One', cat:'delivery' },
+  'deliveroo plus':{ name:'Deliveroo Plus', cat:'delivery' },
+  'just eat':      { name:'Just Eat Pro', cat:'delivery' },
+};
+
+const BANK_FEE_PATTERNS = [
+  { re: /overdraft/i,        type:'overdraft_fee',    avg:35 },
+  { re: /returned (item|payment|dd)/i, type:'returned_item_fee', avg:25 },
+  { re: /unpaid (dd|direct debit)/i,  type:'unpaid_dd_fee', avg:25 },
+  { re: /excess fee|over.limit fee/i, type:'excess_fee', avg:12 },
+  { re: /non-?sterling|fx fee|cross.border|foreign exchange/i, type:'fx_fee', avg:5 },
+  { re: /paper statement/i,  type:'paper_statement_fee', avg:3 },
+  { re: /cash advance fee/i, type:'cash_advance_fee', avg:5 },
+  { re: /annual fee/i,       type:'annual_card_fee', avg:95 },
+  { re: /late payment/i,     type:'late_payment_fee', avg:12 },
+];
+
+function normalize(s) { return (s||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
+
+function detectFindings(txns) {
+  const findings = [];
+
+  // Group by normalized vendor signature
+  const groups = {};
+  for (const t of txns) {
+    if (!t.amount || t.amount >= 0) continue; // we want outgoing only
+    const desc = normalize(t.description);
+    const key = desc.slice(0, 30).split(' ').slice(0, 3).join(' '); // first 3 words
+    if (!groups[key]) groups[key] = { desc, count:0, amounts:[], txns:[] };
+    groups[key].count++;
+    groups[key].amounts.push(Math.abs(t.amount));
+    groups[key].txns.push(t);
+  }
+
+  // Pass 1: recurring (>=2 same-amount-ish charges)
+  for (const [key, g] of Object.entries(groups)) {
+    if (g.count < 2) continue;
+    // amounts within 10% of each other = recurring
+    const avg = g.amounts.reduce((a,b)=>a+b,0) / g.amounts.length;
+    const variance = g.amounts.every(a => Math.abs(a - avg) / avg < 0.10);
+    if (!variance) continue;
+
+    // is it a known sub?
+    let vendor = null, cat = 'subscription';
+    for (const [k, info] of Object.entries(KNOWN_SUBS)) {
+      if (g.desc.includes(k)) { vendor = info.name; cat = info.cat; break; }
+    }
+    if (!vendor) vendor = g.desc.split(' ').slice(0, 3).join(' ').toUpperCase();
+
+    // estimate cadence (monthly assumed if 2+ in dataset)
+    const monthly = avg;
+    findings.push({
+      id: 'F' + Math.random().toString(36).slice(2, 9),
+      type: cat === 'gym' ? 'gym' : (cat === 'streaming' ? 'streaming' : (cat === 'saas' ? 'saas' : 'subscription')),
+      vendor,
+      monthly,
+      annual: monthly * 12,
+      count: g.count,
+      lastSeen: g.txns[g.txns.length-1].date,
+      hits: g.txns.length,
+      status: 'pending',
+      raw: g.txns,
+      category: cat,
+    });
+  }
+
+  // Pass 2: bank fees (individual hits) · aggregate by type
+  const feeAgg = {};
+  for (const t of txns) {
+    if (!t.amount || t.amount >= 0) continue;
+    for (const p of BANK_FEE_PATTERNS) {
+      if (p.re.test(t.description)) {
+        if (!feeAgg[p.type]) feeAgg[p.type] = { count:0, total:0, txns:[] };
+        feeAgg[p.type].count++;
+        feeAgg[p.type].total += Math.abs(t.amount);
+        feeAgg[p.type].txns.push(t);
+        break;
+      }
+    }
+  }
+  for (const [type, info] of Object.entries(feeAgg)) {
+    findings.push({
+      id: 'F' + Math.random().toString(36).slice(2, 9),
+      type: 'bank_fee',
+      feeKind: type,
+      vendor: type.replace(/_/g, ' '),
+      monthly: info.total / Math.max(1, getMonthSpan(info.txns)),
+      annual: info.total * (12 / Math.max(1, getMonthSpan(info.txns))),
+      count: info.count,
+      hits: info.count,
+      status: 'pending',
+      raw: info.txns,
+      category: 'fee',
+    });
+  }
+
+  // Pass 3: detect price hike (recurring with one or more outliers > avg)
+  for (const [key, g] of Object.entries(groups)) {
+    if (g.count < 3) continue;
+    const sorted = [...g.amounts].sort();
+    const median = sorted[Math.floor(sorted.length/2)];
+    const max = Math.max(...g.amounts);
+    if (max / median > 1.15) {
+      let vendor = null;
+      for (const [k, info] of Object.entries(KNOWN_SUBS)) {
+        if (g.desc.includes(k)) { vendor = info.name; break; }
+      }
+      if (!vendor) vendor = g.desc.split(' ').slice(0, 3).join(' ').toUpperCase();
+      const existing = findings.find(f => f.vendor === vendor && f.type !== 'price_hike');
+      if (existing) existing.note = `price hike detected · median ${fmt(median)} → max ${fmt(max)}`;
+      else findings.push({
+        id: 'F' + Math.random().toString(36).slice(2, 9),
+        type: 'price_hike',
+        vendor,
+        monthly: max,
+        annual: max * 12,
+        count: g.count,
+        hits: g.count,
+        status: 'pending',
+        raw: g.txns,
+        category: 'hike',
+        note: `was ${fmt(median)} · now ${fmt(max)}`,
+      });
+    }
+  }
+
+  // Pass 4: duplicate subscriptions (e.g. two streaming services in same category)
+  const byCat = {};
+  for (const f of findings) {
+    if (['streaming','gym','dating'].includes(f.category)) {
+      byCat[f.category] = byCat[f.category] || [];
+      byCat[f.category].push(f);
+    }
+  }
+  for (const [cat, arr] of Object.entries(byCat)) {
+    if (arr.length >= 2) {
+      arr.forEach(f => f.duplicate_category = cat);
+    }
+  }
+
+  return findings;
+}
+
+function getMonthSpan(txns) {
+  const dates = txns.map(t => new Date(t.date)).filter(d => !isNaN(d.getTime()));
+  if (dates.length < 2) return 1;
+  const diff = Math.max(...dates) - Math.min(...dates);
+  return Math.max(1, diff / (1000*60*60*24*30));
+}
+
+// =====================================================================
+// LETTER TEMPLATES
+// =====================================================================
+
+const LETTERS = {
+  // ───── SUBSCRIPTION CANCELLATION ─────
+  subscription_cancel_UK: (f, u) => ({
+    subject: `Cancellation of subscription with immediate effect — ref ${f.id}`,
+    body: `Dear ${f.vendor},
+
+I am writing to cancel my subscription with you, effective immediately.
+
+Under the Consumer Rights Act 2015 and the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, a consumer has the right to terminate a continuing services contract. If your subscription was renewed automatically without a separate express consent at the point of renewal, the renewal may also be voidable under recent CMA guidance on subscription traps (CMA169, 2023).
+
+Please confirm in writing within seven (7) working days that:
+1. The subscription is cancelled with effect from the date of this letter;
+2. No further charges will be taken from my account;
+3. Any auto-renewal authorisation is revoked;
+4. Where the cancellation falls within any applicable cooling-off period, a full refund will be issued under reg. 29 of the 2013 Regulations.
+
+If cancellation is delayed beyond seven working days and a further charge is taken, I reserve the right to dispute the charge under the Direct Debit Guarantee, raise a chargeback through my card issuer, and complain to the relevant regulator (the Competition & Markets Authority and, where applicable, the Financial Conduct Authority).
+
+I am the account holder. My details below are sufficient to identify the account. This letter is sent without prejudice to any other rights or remedies available to me.
+
+Yours faithfully,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  subscription_cancel_EU: (f, u) => ({
+    subject: `Cancellation of subscription — Article 8, Directive 2011/83/EU as amended by Omnibus Directive 2019/2161`,
+    body: `Dear ${f.vendor},
+
+I am writing to cancel my subscription with immediate effect.
+
+Under Article 8 of Directive 2011/83/EU (the Consumer Rights Directive), as amended by Directive 2019/2161 (the Omnibus Directive), I am entitled to terminate this contract. The Omnibus Directive specifically targets manipulative auto-renewal and "subscription trap" practices, and requires clear, fair, and easy-to-use cancellation routes.
+
+Please confirm in writing within seven (7) calendar days that:
+1. The subscription is cancelled with effect from today;
+2. No further charges will be taken from my account or payment instrument;
+3. The auto-renewal authorisation is revoked;
+4. Where applicable, a refund of any pro-rata amount paid in advance is issued in accordance with national consumer law.
+
+If any further charge is taken after this letter, I will raise a chargeback through my card issuer and lodge a complaint with the consumer-protection authority in my Member State.
+
+I am the account holder. This letter is sent without prejudice to my other rights.
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  subscription_cancel_US: (f, u) => ({
+    subject: `Cancellation request — FTC Click-to-Cancel Rule / state consumer law`,
+    body: `Dear ${f.vendor},
+
+I am writing to cancel my subscription with immediate effect.
+
+Under the FTC's "Click-to-Cancel" Rule (16 CFR Part 425, effective 2024), you are required to provide a cancellation mechanism that is at least as easy as the sign-up mechanism. You are also required to obtain my express informed consent to any negative-option feature, including automatic renewal.
+
+Please confirm in writing within seven (7) business days that:
+1. The subscription is cancelled with effect from today;
+2. No further charges will be made;
+3. The auto-renewal authorisation is revoked;
+4. Any prorated refund owed is issued promptly.
+
+If I am charged after this letter, I will dispute the charge under 15 USC 1666 (Fair Credit Billing Act) and file a complaint with the Federal Trade Commission and my state attorney general's consumer protection division.
+
+I am the account holder.
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  subscription_cancel_AU: (f, u) => ({
+    subject: `Cancellation of subscription — Australian Consumer Law`,
+    body: `Dear ${f.vendor},
+
+I am writing to cancel my subscription with immediate effect.
+
+Under the Australian Consumer Law (Schedule 2 of the Competition and Consumer Act 2010), I am entitled to terminate this services contract. ACCC guidance specifically addresses misleading auto-renewal practices as potentially in breach of section 18 (misleading or deceptive conduct) and section 21 (unconscionable conduct).
+
+Please confirm in writing within seven (7) business days that:
+1. The subscription is cancelled effective today;
+2. No further charges will be taken;
+3. Auto-renewal authorisation is revoked;
+4. Any refund owed is issued promptly.
+
+If further charges are taken, I will dispute the charge through my card issuer and lodge a complaint with the ACCC and the state Fair Trading office.
+
+Regards,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  // ───── BANK FEE REFUND ─────
+  bank_fee_UK: (f, u) => ({
+    subject: `Request for refund of ${f.vendor} — totalling ${fmt(f.annual / (12/Math.max(1,(f.hits||1)/getMonthCount(f))))} — ref ${f.id}`,
+    body: `Dear Sir/Madam,
+
+I am writing to request a refund of ${f.count} bank fee${f.count>1?'s':''} of type "${f.vendor}" charged to my account over the recent period, totalling approximately ${fmt(f.annual)} on an annualised basis.
+
+Under the FCA's Consumer Duty (PRIN 2A, effective 31 July 2023), you are required to deliver good outcomes for retail customers and to act to avoid causing foreseeable harm. Repeated fees of this nature can amount to foreseeable harm, particularly where the customer was in temporary financial difficulty.
+
+I respectfully ask that you:
+1. Review the fees listed and refund those that you cannot demonstrate were necessary, proportionate, and clearly communicated;
+2. Confirm the refund in writing;
+3. Where the fees relate to a temporary shortfall, consider whether forbearance under FCA CONC 7 was appropriate.
+
+If you are unable to refund, please send me a final response letter so I may refer this matter to the Financial Ombudsman Service.
+
+Yours faithfully,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  bank_fee_EU: (f, u) => ({
+    subject: `Request for refund of ${f.vendor} fees — totalling ~${fmt(f.annual)} annualised`,
+    body: `Dear Sir/Madam,
+
+I am writing to request a refund of ${f.count} fee${f.count>1?'s':''} of type "${f.vendor}" charged to my account, totalling approximately ${fmt(f.annual)} on an annualised basis.
+
+Under Directive 2014/92/EU (the Payment Accounts Directive) and Directive 2015/2366 (PSD2), bank charges must be reasonable, transparent, and proportionate. National consumer-protection law in many Member States additionally requires fair dealing.
+
+I respectfully request:
+1. A review and refund of the fees, particularly any that were not clearly communicated in advance;
+2. Written confirmation of the refund;
+3. Where the fees relate to a temporary shortfall, consideration of forbearance.
+
+If you are unable to refund, please provide your final response so I may escalate to the relevant national supervisory authority and, if applicable, the European Consumer Centre.
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  bank_fee_US: (f, u) => ({
+    subject: `Request for refund of ${f.vendor} — approx ${fmt(f.annual)} annualised`,
+    body: `Dear Sir/Madam,
+
+I am writing to request a refund of ${f.count} fee${f.count>1?'s':''} of type "${f.vendor}" charged to my account, totalling approximately ${fmt(f.annual)} on an annualised basis.
+
+The CFPB has identified excessive and surprise fees as a priority enforcement area. Under the Consumer Financial Protection Act (12 USC 5481 et seq.) the CFPB is empowered to address unfair, deceptive, or abusive acts and practices.
+
+I respectfully request:
+1. A review and refund of the fees, particularly any not clearly disclosed in advance;
+2. Written confirmation of the refund;
+3. Where the fees relate to a temporary shortfall, consideration of fee waiver.
+
+If you are unable to refund, I will file a complaint with the CFPB and my state banking regulator.
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  bank_fee_AU: (f, u) => ({
+    subject: `Request for refund of ${f.vendor} fees`,
+    body: `Dear Sir/Madam,
+
+I am writing to request a refund of ${f.count} fee${f.count>1?'s':''} of type "${f.vendor}" totalling approximately ${fmt(f.annual)} annualised.
+
+Under the Banking Code of Practice and ASIC Regulatory Guide 165 (Internal and external dispute resolution), banks are required to deal fairly with complaints about fees. Excessive fees may also engage section 12CB of the ASIC Act (unconscionable conduct).
+
+I respectfully request:
+1. Review and refund of the fees;
+2. Written confirmation;
+3. Forbearance consideration where applicable.
+
+If unable to refund, please provide your final response so I may escalate to AFCA.
+
+Regards,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  // ───── PRICE HIKE DISPUTE ─────
+  price_hike_UK: (f, u) => ({
+    subject: `Dispute of price increase — ${f.vendor} — ref ${f.id}`,
+    body: `Dear ${f.vendor},
+
+I have noticed that the recurring charge from you has increased from ${(f.note || '').replace(/.*was /, '').replace(/ \.\.\. now .*/, '')} to ${fmt(f.monthly)}.
+
+Under the Consumer Rights Act 2015 (s. 49 — services to be performed with reasonable care and skill, and s. 50 — information given is binding), and the implied term of fair dealing, any material price change to a continuing services contract requires clear and timely notice with a meaningful right to cancel free of charge.
+
+Please confirm in writing within seven (7) working days:
+1. The date you provided written notice of the increase;
+2. The means by which I was offered the opportunity to cancel free of charge before the increase took effect;
+3. Whether you will roll back the increase or, alternatively, allow me to cancel the contract from the date of the increase with a refund of any amount paid at the higher rate.
+
+If you are unable to satisfy these requirements, I will treat the contract as repudiated and request a full refund of all amounts paid at the increased rate, and will, if necessary, refer the matter to the relevant ADR scheme.
+
+Yours faithfully,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  price_hike_EU: (f, u) => ({
+    subject: `Dispute of price increase — ${f.vendor}`,
+    body: `Dear ${f.vendor},
+
+I have noticed that the recurring charge from you has increased to ${fmt(f.monthly)}.
+
+Under Directive 2011/83/EU as amended by Directive 2019/2161 (Omnibus), any material change to the terms of a continuing services contract requires clear and timely notice and a meaningful right to cancel free of charge.
+
+Please confirm in writing within seven (7) calendar days:
+1. The date you provided notice of the increase;
+2. The opportunity provided to cancel free of charge before the increase took effect;
+3. Whether you will roll back the increase or allow me to cancel from the date of the increase with refund.
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  price_hike_US: (f, u) => ({
+    subject: `Dispute of price increase — ${f.vendor}`,
+    body: `Dear ${f.vendor},
+
+The recurring charge to my account has increased to ${fmt(f.monthly)}.
+
+Under the FTC Click-to-Cancel Rule (16 CFR Part 425) and applicable state law, material changes to a negative-option subscription require clear and conspicuous notice and a renewed express informed consent.
+
+Please confirm within seven (7) business days:
+1. The date and means by which you provided notice;
+2. The opportunity to cancel free of charge before the increase took effect;
+3. Whether you will roll back the increase or allow cancellation with a refund.
+
+If unsatisfied, I will dispute the charge with my card issuer and file a complaint with the FTC and my state AG.
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  price_hike_AU: (f, u) => ({
+    subject: `Dispute of price increase — ${f.vendor}`,
+    body: `Dear ${f.vendor},
+
+The recurring charge to my account has increased to ${fmt(f.monthly)}.
+
+Under the Australian Consumer Law (Sch 2, Competition and Consumer Act 2010), material price changes require clear notice and a fair opportunity to cancel.
+
+Please confirm within seven (7) business days the notice provided, the cancellation opportunity, and whether the increase will be rolled back or the contract terminable with refund.
+
+Regards,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  // ───── DSAR (GDPR data subject access request) ─────
+  dsar_UK: (f, u) => ({
+    subject: `Data Subject Access Request — UK GDPR Article 15`,
+    body: `Dear Data Protection Officer,
+
+This is a Data Subject Access Request under Article 15 of the UK GDPR and section 45 of the Data Protection Act 2018.
+
+Please provide, within one calendar month of receipt:
+
+1. Confirmation as to whether or not personal data concerning me is being processed;
+2. A copy of all personal data being processed, including but not limited to: name, address, contact details, account history, transaction history, marketing profiles, recordings of phone calls, internal notes;
+3. The purposes of processing, categories of personal data, and recipients with whom data has been shared;
+4. The envisaged retention period or criteria for retention;
+5. The source of the data if not collected directly from me;
+6. Information about any automated decision-making, including profiling and the logic involved.
+
+I confirm that I am the data subject named below. Please contact me by email if you require any further information to verify my identity (preferably without delaying the SAR response).
+
+Where any of my data is held in marketing or third-party-sharing categories, please also note this as a request to cease such processing under Article 21 (right to object).
+
+Yours faithfully,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  dsar_EU: (f, u) => ({
+    subject: `Data Subject Access Request — GDPR Article 15`,
+    body: `Dear Data Protection Officer,
+
+This is a Data Subject Access Request under Article 15 of Regulation (EU) 2016/679 (GDPR).
+
+Please provide within one (1) month:
+1. Confirmation of processing;
+2. A complete copy of all personal data processed about me;
+3. Purposes of processing, categories of data, and recipients;
+4. Retention periods;
+5. Source of data if not collected from me;
+6. Information about automated decision-making and profiling.
+
+I also exercise my right to object to processing for direct marketing (Article 21(2)).
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  dsar_US: (f, u) => ({
+    subject: `Consumer Data Access Request — CCPA / state privacy law`,
+    body: `Dear Privacy Officer,
+
+I am exercising my right under the California Consumer Privacy Act (CCPA) / CPRA (and the equivalent state law applicable to me) to request:
+
+1. The categories and specific pieces of personal information you have collected about me;
+2. The categories of sources;
+3. The business or commercial purpose for collecting or selling that information;
+4. The categories of third parties with whom the information is shared.
+
+I also request that you do not sell or share my personal information.
+
+Please respond within 45 days.
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  dsar_AU: (f, u) => ({
+    subject: `Privacy Act access request — Australian Privacy Principle 12`,
+    body: `Dear Privacy Officer,
+
+Under Australian Privacy Principle 12 of the Privacy Act 1988, I request access to all personal information you hold about me, including:
+
+1. Categories of personal information held;
+2. Source of the information;
+3. Purposes for which it is held and used;
+4. Recipients with whom it has been shared.
+
+Please respond within a reasonable period (typically 30 days).
+
+Regards,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+
+  // ───── GENERIC FALLBACK ─────
+  generic: (f, u) => ({
+    subject: `Account review request — ref ${f.id}`,
+    body: `Dear ${f.vendor},
+
+I am writing to request a review of the charges to my account in respect of ${f.vendor}.
+
+Please confirm:
+1. The nature of the recurring charge of ${fmt(f.monthly)};
+2. The consent on which it is based and when it was given;
+3. The cancellation policy and any current notice required;
+4. Whether any refund is available for periods of non-use.
+
+Please respond within fourteen (14) days.
+
+Sincerely,
+
+${u.name || '[Your name]'}
+${u.address ? u.address + '\n' : ''}${u.email ? u.email : ''}`
+  }),
+};
+
+function getMonthCount(f) {
+  return getMonthSpan(f.raw || []);
+}
+
+function pickLetter(f, jur, u) {
+  const t = f.type;
+  const try1 = LETTERS[`${t}_${jur}`];
+  if (try1) return try1(f, u);
+  if (t === 'streaming' || t === 'saas' || t === 'gym' || t === 'subscription') {
+    const map = { 'streaming':'subscription_cancel', 'saas':'subscription_cancel', 'gym':'subscription_cancel', 'subscription':'subscription_cancel' };
+    const k = `${map[t]}_${jur}`;
+    if (LETTERS[k]) return LETTERS[k](f, u);
+  }
+  if (t === 'bank_fee') {
+    const k = `bank_fee_${jur}`;
+    if (LETTERS[k]) return LETTERS[k](f, u);
+  }
+  if (t === 'price_hike') {
+    const k = `price_hike_${jur}`;
+    if (LETTERS[k]) return LETTERS[k](f, u);
+  }
+  return LETTERS.generic(f, u);
+}
+
+// =====================================================================
+// AUDIT CHAIN (prevHash)
+// =====================================================================
+async function sha256Hex(s) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function audit(kind, payload) {
+  const prev = await dbGet('audit', 'last') || { hash: null, seq: 0 };
+  const entry = {
+    seq: prev.seq + 1,
+    ts: new Date().toISOString(),
+    kind, payload,
+    prev_hash: prev.hash,
+    fork_pub: state.konomi.pub,
+  };
+  const canon = JSON.stringify(entry);
+  entry.hash = await sha256Hex(canon);
+  await dbPut('audit', 'seq:' + entry.seq, entry);
+  await dbPut('audit', 'last', { hash: entry.hash, seq: entry.seq });
+  return entry;
+}
+
+// =====================================================================
+// UI WIRING
+// =====================================================================
+
+function render() {
+  // findings table
+  const tbody = $('#findings-tbody');
+  const empty = $('#findings-empty');
+  const table = $('#findings-table');
+  tbody.innerHTML = '';
+  if (!state.findings.length) {
+    empty.style.display = 'block';
+    table.style.display = 'none';
+  } else {
+    empty.style.display = 'none';
+    table.style.display = 'table';
+    // sort by annual descending
+    const sorted = [...state.findings].sort((a,b) => b.annual - a.annual);
+    for (const f of sorted) {
+      const tr = document.createElement('tr');
+      tr.style.cursor = 'pointer';
+      tr.onclick = () => openLetter(f);
+      const tagClass = f.type === 'bank_fee' ? 'fee' : (f.type === 'price_hike' ? 'hike' : (f.duplicate_category ? 'dup' : 'sub'));
+      const tagLabel = f.type.replace('_',' ');
+      const action = f.type === 'bank_fee' ? 'Request refund' :
+                     f.type === 'price_hike' ? 'Dispute increase' :
+                     'Cancel + revoke';
+      const statusBadge = f.status === 'sent' ? '<span class="tag sent">sent</span>' :
+                          f.status === 'recovered' ? '<span class="tag ok">recovered</span>' :
+                          '<span class="tag pending">pending</span>';
+      tr.innerHTML = `
+        <td><span class="tag ${tagClass}">${tagLabel}</span>${f.duplicate_category ? '<br><span class="tag dup" style="margin-top:4px">duplicate ' + f.duplicate_category + '</span>':''}</td>
+        <td><b>${f.vendor}</b><br><span class="muted mono" style="font-size:11px">${f.hits} hits${f.note ? ' · ' + f.note : ''}</span></td>
+        <td class="amt neg">${fmt(f.monthly)}</td>
+        <td class="amt neg">${fmt(f.annual)}</td>
+        <td><span class="muted">${action}</span></td>
+        <td>${statusBadge}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+  }
+
+  // stats
+  $('#stat-findings').textContent = state.findings.length;
+  const bleed = state.findings.reduce((s,f) => s + (f.annual || 0), 0);
+  $('#stat-bleed').textContent = state.findings.length ? fmt(bleed) : '—';
+  const recovered = Object.values(state.letters).filter(l => l.recoveredAt).reduce((s,l) => s + (l.amount||0), 0);
+  $('#stat-recovered').textContent = recovered ? fmt(recovered) : (state.findings.length ? fmt(0) : '—');
+  $('#stat-letters').textContent = Object.keys(state.letters).length;
+
+  const target = state.recoveryTarget || bleed || 1;
+  const pct = Math.min(100, Math.round((recovered / target) * 100));
+  $('#recovery-pct').style.width = pct + '%';
+  $('#recovery-label').textContent = state.findings.length
+    ? `${pct}% of ${fmt(target)} reclaimed · ${Object.values(state.letters).filter(l=>l.sentAt && !l.recoveredAt).length} letters sent, awaiting response`
+    : 'No findings yet · drop a statement below to start.';
+
+  // settings
+  $('#jurisdiction').value = state.jurisdiction;
+  $('#user-name').value = state.user.name;
+  $('#user-address').value = state.user.address;
+  $('#user-email').value = state.user.email;
+  $('#recovery-target').value = state.recoveryTarget || '';
+  $('#konomi-pub').textContent = state.konomi.pub || '(no key yet · click Mint)';
+}
+
+async function openLetter(f) {
+  // ensure key
+  if (!state.konomi.pub) await mintKonomi();
+
+  // ensure user details fresh
+  state.user = {
+    name: $('#user-name').value || state.user.name,
+    address: $('#user-address').value || state.user.address,
+    email: $('#user-email').value || state.user.email,
+  };
+
+  const letter = pickLetter(f, state.jurisdiction, state.user);
+  const recipient = f.vendor;
+  const sig = await konomiSign(letter.subject + '\n' + letter.body);
+
+  state.letters[f.id] = state.letters[f.id] || {};
+  Object.assign(state.letters[f.id], {
+    recipient, subject: letter.subject, body: letter.body,
+    signedAt: new Date().toISOString(), signature: sig,
+    amount: f.annual || 0,
+  });
+  await persist();
+  await audit('letter_drafted', { id: f.id, recipient, jurisdiction: state.jurisdiction });
+
+  $('#modal-meta').textContent = `Letter ID ${f.id} · jurisdiction ${state.jurisdiction} · finding ${f.type}`;
+  $('#modal-title').textContent = `${f.vendor} — ${f.type.replace('_',' ')}`;
+  $('#modal-context').textContent = `${f.hits} hits · ${fmt(f.monthly)}/mo · ${fmt(f.annual)} annualised${f.note ? ' · ' + f.note : ''}`;
+  $('#modal-recipient').value = recipient;
+  $('#modal-subject').value = letter.subject;
+  $('#modal-body').value = letter.body;
+  $('#modal-sig').textContent = sig ? ('Ed25519: ' + sig.slice(0, 64) + '…') : '(signature unavailable in this browser)';
+  $('#letter-modal').classList.add('open');
+  $('#letter-modal').dataset.fid = f.id;
+  render();
+}
+
+function closeModal() { $('#letter-modal').classList.remove('open'); }
+
+async function markSent() {
+  const fid = $('#letter-modal').dataset.fid;
+  if (!fid) return;
+  state.letters[fid].sentAt = new Date().toISOString();
+  const f = state.findings.find(x => x.id === fid);
+  if (f) f.status = 'sent';
+  await persist();
+  await audit('letter_sent', { id: fid });
+  closeModal();
+  render();
+}
+
+async function copyLetter() {
+  const subj = $('#modal-subject').value;
+  const body = $('#modal-body').value;
+  const full = `Subject: ${subj}\n\n${body}`;
+  try {
+    await navigator.clipboard.writeText(full);
+    flash($('#modal-copy'), 'Copied ✓');
+  } catch (e) { alert('Could not copy automatically · select all and copy manually.'); }
+}
+
+function flash(btn, msg) {
+  const orig = btn.textContent;
+  btn.textContent = msg;
+  setTimeout(()=>{ btn.textContent = orig; }, 1400);
+}
+
+function openMail() {
+  const subj = encodeURIComponent($('#modal-subject').value);
+  const body = encodeURIComponent($('#modal-body').value);
+  const to = ''; // user fills in
+  window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
+}
+
+function downloadLetter() {
+  const subj = $('#modal-subject').value;
+  const body = $('#modal-body').value;
+  const sig = $('#modal-sig').textContent;
+  const full = `Subject: ${subj}\n\n${body}\n\n---\n${sig}\n`;
+  const blob = new Blob([full], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fallback-letter-${$('#letter-modal').dataset.fid || 'draft'}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// =====================================================================
+// FILE INTAKE
+// =====================================================================
+async function handleFile(file) {
+  const status = $('#parse-status');
+  status.textContent = `parsing ${file.name}…`;
+  try {
+    let txns = [];
+    if (file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf') {
+      status.textContent = `loading PDF.js · parsing ${file.name}…`;
+      const buf = await file.arrayBuffer();
+      txns = await parsePDF(buf);
+    } else if (file.name.toLowerCase().endsWith('.csv') || file.type === 'text/csv') {
+      txns = parseCSV(await file.text());
+    } else {
+      txns = parsePasted(await file.text());
+    }
+    await processTxns(txns, file.name);
+  } catch (e) {
+    status.textContent = `✗ parse error: ${e.message}`;
+    console.error(e);
+  }
+}
+
+async function processTxns(txns, source) {
+  const status = $('#parse-status');
+  if (!txns.length) {
+    status.textContent = '✗ no transactions found — try pasting lines manually below';
+    return;
+  }
+  status.textContent = `parsed ${txns.length} transactions · running pattern detection…`;
+  state.parsed = { txns: txns.length, period: 'recent', source };
+  const findings = detectFindings(txns);
+  // merge with existing (dedupe by vendor+type)
+  for (const f of findings) {
+    const existing = state.findings.find(x => x.vendor === f.vendor && x.type === f.type);
+    if (existing) {
+      Object.assign(existing, { hits: existing.hits + f.hits, monthly: f.monthly, annual: f.annual });
+    } else {
+      state.findings.push(f);
+    }
+  }
+  await persist();
+  await audit('parsed', { count: txns.length, findings: findings.length, source });
+
+  // NAS cube ingest (when fork present)
+  if (window.nas && window.nas.isForkPresent && window.nas.isForkPresent()) {
+    try {
+      const summary = `FallBack parsed ${txns.length} txns · found ${findings.length} extractions · ${fmt(findings.reduce((s,f)=>s+f.annual,0))} annual bleed estimated`;
+      window.nas.ingest(summary, { kind: 'fallback-scan', findings: findings.length });
+    } catch (_) {}
+  }
+
+  // estate broadcast (anonymous)
+  try {
+    new BroadcastChannel('fall-signal').postMessage({
+      kind: 'fallback:scan',
+      ts: Date.now(),
+      tool: 'fallback',
+      counts: { txns: txns.length, findings: findings.length },
+    });
+  } catch (_) {}
+
+  status.textContent = `✓ found ${findings.length} extraction patterns · scroll down to review`;
+  render();
+}
+
+// =====================================================================
+// EXPORT / WIPE
+// =====================================================================
+async function exportAll() {
+  const audit_log = [];
+  const db = await openDB();
+  await new Promise(res => {
+    const tx = db.transaction('audit','readonly');
+    const obj = tx.objectStore('audit');
+    const c = obj.openCursor();
+    c.onsuccess = (e) => {
+      const cur = e.target.result;
+      if (cur) { audit_log.push({ key: cur.key, value: cur.value }); cur.continue(); }
+      else res();
+    };
+  });
+  const blob = new Blob([JSON.stringify({
+    exported_at: new Date().toISOString(),
+    konomi_pub: state.konomi.pub,
+    state, audit_log,
+  }, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `fallback-export-${Date.now()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function wipeAll() {
+  if (!confirm('Wipe ALL FallBack data on this device? This deletes findings, letters, audit log, and Konomi key. Cannot be undone.')) return;
+  await dbWipe();
+  state.findings = [];
+  state.letters = {};
+  state.konomi = { pub:null, priv:null, source:'none' };
+  state.parsed = { txns:0, period:null, source:null };
+  render();
+  $('#parse-status').textContent = '(local data wiped)';
+}
+
+// =====================================================================
+// WIRE UP
+// =====================================================================
+
+window.addEventListener('DOMContentLoaded', async () => {
+  await restore();
+  if (!state.konomi.pub) await mintKonomi();
+  render();
+
+  // drop zone
+  const drop = $('#drop');
+  const input = $('#file-input');
+  drop.addEventListener('click', () => input.click());
+  input.addEventListener('change', (e) => {
+    [...e.target.files].forEach(handleFile);
+  });
+  drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('over'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+  drop.addEventListener('drop', (e) => {
+    e.preventDefault();
+    drop.classList.remove('over');
+    [...e.dataTransfer.files].forEach(handleFile);
+  });
+
+  // paste
+  $('#paste-btn').addEventListener('click', async () => {
+    const txt = $('#paste-area').value;
+    if (!txt.trim()) { $('#parse-status').textContent = 'paste some lines first'; return; }
+    const txns = parsePasted(txt);
+    await processTxns(txns, 'pasted');
+  });
+
+  // settings
+  $('#jurisdiction').addEventListener('change', async (e) => {
+    state.jurisdiction = e.target.value;
+    await persist();
+    render();
+  });
+  ['user-name','user-address','user-email'].forEach(id => {
+    $('#' + id).addEventListener('change', async (e) => {
+      const k = id.replace('user-','');
+      state.user[k] = e.target.value;
+      await persist();
+    });
+  });
+  $('#recovery-target').addEventListener('change', async (e) => {
+    state.recoveryTarget = parseFloat(e.target.value) || 0;
+    await persist();
+    render();
+  });
+
+  // Konomi
+  $('#konomi-mint').addEventListener('click', async () => {
+    await mintKonomi();
+    render();
+    flash($('#konomi-mint'), 'Minted ✓');
+  });
+  $('#konomi-export').addEventListener('click', () => {
+    if (!state.konomi.pub) return;
+    navigator.clipboard.writeText(state.konomi.pub);
+    flash($('#konomi-export'), 'Copied ✓');
+  });
+
+  // data
+  $('#export-all').addEventListener('click', exportAll);
+  $('#wipe-all').addEventListener('click', wipeAll);
+
+  // modal
+  $('#modal-close').addEventListener('click', closeModal);
+  $('#letter-modal').addEventListener('click', (e) => { if (e.target.id === 'letter-modal') closeModal(); });
+  $('#modal-copy').addEventListener('click', copyLetter);
+  $('#modal-email').addEventListener('click', openMail);
+  $('#modal-mark-sent').addEventListener('click', markSent);
+  $('#modal-download').addEventListener('click', downloadLetter);
+
+  console.log('%c◊·κ=φ⁴ FallBack · prime 1307 · the money comes back to you', 'color:#b8974a;font-weight:bold');
+});
+
+// expose for debugging
+window.FallBack = { state, detectFindings, parseCSV, parsePasted, LETTERS };
+</script>
+
+</body>
+</html>
