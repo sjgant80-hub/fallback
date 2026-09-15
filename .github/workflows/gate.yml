@@ -1,0 +1,46 @@
+name: gate
+# v25 upgrade: the refund/rights engine is now a real gated kernel (kernel.mjs) — statement parsing,
+# recurring-subscription / bank-fee / price-hike / duplicate detection, the money maths, and a
+# tamper-evident findings receipt (sha256-sealed). Finding ids are content-addressed (reproducible)
+# and dates parse to UTC day-numbers (CI-stable). Tests + a mutation witness that must be CLEAN +
+# a page fixpoint (the live engine IS the injected kernel), plus the page checks.
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: tests
+        run: node --test kernel.test.mjs
+      - name: mutation gate — kernel.mjs must be CLEAN
+        run: |
+          node tools/witness.mjs mutate kernel.mjs --timeout 30000 --cap 900 --baseline witness.baseline.json --test node --test kernel.test.mjs | tee gate.out || true
+          node -e "const b=require('fs').readFileSync('gate.out','utf8');const j=JSON.parse(b.slice(b.indexOf('{'),b.lastIndexOf('}')+1));if(j.clean!==true){console.error('GATE NOT CLEAN');process.exit(1)}console.log('CLEAN '+j.killed+'/'+j.total)"
+      - name: page fixpoint — the live engine IS the gated kernel
+        run: |
+          node build-page.mjs
+          git diff --exit-code index.html
+  page:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: the page is a working page (inline scripts parse, no placeholders/secrets)
+        run: |
+          node -e "
+          const fs=require('fs');
+          const html=fs.readdirSync('.').filter(f=>f.endsWith('.html'));
+          let fail=0;
+          for(const f of html){
+            const s=fs.readFileSync(f,'utf8');
+            const blocks=[...s.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*application[^>]*json)[^>]*>([\s\S]*?)<\/script>/g)];
+            blocks.forEach((m,i)=>{ try { new (require('vm').Script)(m[1].replace(/^\s*import\s.*$/gm,'').replace(/^\s*export\s/gm,'')); } catch(e){ if(!/await is only valid|Unexpected token 'export'|Cannot use import|top-level await/.test(e.message)){ console.error(f+' script['+i+'] DOES NOT PARSE: '+e.message); fail=1; } } });
+            const ph=s.match(/__[A-Z][A-Z0-9_]*__/g); if(ph){ console.error(f+' placeholders: '+[...new Set(ph)].join(', ')); fail=1; }
+            const hit=s.match(/(sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----)/); if(hit){ console.error(f+' credential: '+hit[1].slice(0,12)); fail=1; }
+          }
+          if(fail){ console.error('PAGE GATE FAILED'); process.exit(1); }
+          console.log('page gate clean — '+html.length+' page(s)');
+          "

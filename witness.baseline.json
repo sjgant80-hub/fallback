@@ -1,0 +1,42 @@
+[
+  {
+    "mutation": ">= → >",
+    "snippet": "if (!t.amount || t.amount >= 0) continue; // outgoing only",
+    "reason": "Equivalent: >= and > differ only at amount === 0, but 0 is falsy so the preceding `!t.amount` already continues on a zero amount either way. No input reaches the comparison with a zero that the guard did not already skip."
+  },
+  {
+    "mutation": ">= → >",
+    "snippet": "if (!t.amount || t.amount >= 0) continue;",
+    "reason": "Equivalent: >= and > differ only at amount === 0, but 0 is falsy so the preceding `!t.amount` already continues on a zero amount either way (this is the Pass-2 fee scan; same shadowing as Pass-1)."
+  },
+  {
+    "mutation": "> → >=",
+    "snippet": ".sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);",
+    "reason": "Equivalent: finding ids are content-addressed and include the group key, so two findings never share an id; the a.id===b.id tie branch (the only place > vs >= differ) is unreachable, and for distinct ids both forms give the identical ordering."
+  },
+  {
+    "mutation": "< → <=",
+    "snippet": ".sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);",
+    "reason": "Equivalent: finding ids are unique (content-addressed + group key), so the a.id===b.id tie branch where < vs <= differ is unreachable; for distinct ids both forms order identically."
+  },
+  {
+    "mutation": "< → <=",
+    "snippet": "for (let i = startIdx; i < lines.length; i++) {",
+    "reason": "Equivalent: the extra iteration reads lines[length] === undefined, parseCSVLine(undefined) returns ['']  (length 1), which the `cells.length < 2` guard immediately continues on — no row is added and no other state changes."
+  },
+  {
+    "mutation": "< → <=",
+    "snippet": "for (let t = 0; t < 16; t++) w[t] = (bytes[off + 4 * t] << 24) | (bytes[off + 4 * t + 1] <",
+    "reason": "Equivalent: the extra iteration writes w[16] from message bytes, but the very next loop (t=16..63) unconditionally overwrites w[16] before any compression reads it. The pre-write is dead; SHA-256 output is bit-identical, proven by the node:crypto oracle."
+  },
+  {
+    "mutation": "< → <=",
+    "snippet": "for (let t = 16; t < 64; t++) {",
+    "reason": "Equivalent: the mutated bound runs one extra schedule iteration writing w[64], out of bounds on the fixed Uint32Array(64) — typed-array OOB writes are discarded and nothing reads past w[63]. Bit-identical output; the node:crypto oracle passes either way."
+  },
+  {
+    "mutation": "|| → &&",
+    "snippet": "if (header.includes('date') && (header.includes('amount') || header.includes('debit'))) st",
+    "reason": "Equivalent: a header line is column names, never a row of values, so it is unparseable as a transaction (no date value, no money value) whether or not it is skipped. Changing amount||debit to amount&&debit only flips whether the unparseable header row is iterated, which adds no transaction either way."
+  }
+]
