@@ -378,7 +378,7 @@ hr{border:none;border-top:1px solid var(--line);margin:24px 0}
 <!-- PDF.js · loaded lazily only when a PDF is dropped                       -->
 <!-- ===================================================================== -->
 <script type="module">
-/*__KERNEL__*/
+/* KERNEL-BEGIN */
 // fallback · pure refund/rights kernel — no DOM, no clock, no IO. Total: garbage → safe empties, never throws.
 // The deterministic engine behind "drop a statement → see what you're owed": statement parsing, the
 // charge-detection rules (recurring subscriptions, bank fees, price hikes, duplicates), and the money
@@ -717,7 +717,7 @@ function sha256(ascii) {
   for (let i = 0; i < 8; i++) out += (H[i] >>> 0).toString(16).padStart(8, '0');
   return out;
 }
-/*__END_KERNEL__*/
+/* KERNEL-END */
 'use strict';
 
 // =====================================================================

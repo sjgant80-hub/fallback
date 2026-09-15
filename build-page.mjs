@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-// Inline the witness-gated kernel into the page between the /*__KERNEL__*/ markers, so the refund
+// Inline the witness-gated kernel into the page between the /* KERNEL-BEGIN */ markers, so the refund
 // engine that runs is the exact engine that was proven. Idempotent (a fixpoint); CI diffs the rebuild.
 import { readFileSync, writeFileSync } from 'node:fs';
-const OPEN = '/*__KERNEL__*/', CLOSE = '/*__END_KERNEL__*/';
+const OPEN = '/* KERNEL-BEGIN */', CLOSE = '/* KERNEL-END */';
 const kernel = readFileSync(new URL('./kernel.mjs', import.meta.url), 'utf8')
   .replace(/^export default[\s\S]*?;\s*$/m, '')                 // drop the default re-export
   .replace(/^export (function|const|async function)/gm, '$1')  // strip the export keyword
