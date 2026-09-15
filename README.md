@@ -2,9 +2,24 @@
 
 sovereign single-file browser tool · MIT · @ai-native-solutions
 
-- Live: https://sjgant80-hub.github.io/fallback/
+- **Live: https://sjgant80-hub.github.io/fallback/**
 - Registry: https://sjgant80-hub.github.io/fallmarket/listing.html?id=fallback
 - Publisher: [AI-Native Solutions](https://ai-nativesolutions.com)
+
+## v25 · a witness-gated refund engine (no LLM)
+
+Drop a bank statement → see what you're owed. The whole engine is a pure, deterministic
+kernel (`kernel.mjs`): statement parsing, recurring-subscription / bank-fee / price-hike /
+duplicate detection, and the money maths — split into what's **refundable** (fees you can
+claim back), **cancellable savings** (subscriptions), and **disputable** (price hikes).
+**No model grades your statement; rules do.**
+
+Every analysis ships a **tamper-evident findings receipt** — a content-addressed SHA-256
+seal over the exact findings + totals (`sealFindings`/`verifyFindings`). Change one figure
+and the seal fails. Finding IDs are content-addressed, so re-parsing the same statement is
+fully reproducible; dates parse to UTC day-numbers so the result is identical in the browser
+and in CI. The live page inlines the exact **witness-gated** kernel (CI requires the mutation
+gate CLEAN), so the engine you run is the engine that was proven.
 
 ## What this sovereign single-file browser tool does
 
